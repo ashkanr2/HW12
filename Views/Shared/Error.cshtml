@@ -1,0 +1,25 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="bg-warning">
+
+
+<h1 class="text-danger">اخطار </h1>
+<h2 class="text-danger">ادرس مورد نظر یافت نشد </h2>
+<a class="btn btn-primary btn-block btn-lg bg-danger" asp-controller="Home" asp-action="Index" >بازگشت به صفحه اصلی  </a>
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+</div>
+

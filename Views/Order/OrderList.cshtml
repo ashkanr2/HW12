@@ -1,0 +1,54 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "سبدهای خرید";
+}
+<br />
+<br />
+<br />
+<br />
+
+
+<div class="table-responsive text-center mt-5 bg-warning text-white">
+    <br />
+    <br />
+    <span> سبد خرید کاربر : @ViewBag.Name </span>
+    <form method="post">
+        <a class="btn btn-warning btn-block btn-lg border border-white" asp-controller="User" asp-action="List">بازگشت به محصولات </a>
+        <a class="bg-success text-white text-center" asp-action="List" asp-controller="Order" >بازگشت به سبدها</a>
+        <table class="table table-bordered table-striped table-hover mt-2 bg-success">
+            <thead class="table-warning bg-primary">
+                <tr class="text-secondary bg-warning">
+                   
+                    <td>شماره کالا ها</td>
+                    <td>نام کالا</td>
+                    <td>قیمت</td>
+                    <td>تعداد </td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in @Model)
+                {
+                    @if (item.Id == ViewBag.OrderId)
+                    {
+                        @foreach (var p in item.Productid)
+                        {
+                            <tr class="text-white">
+                                <td>@p</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="bg-warning text-white">
+            جمع کل سبد خرید :
+            <h3 class="text-success">
+                @ViewBag.TotalPrice
+            </h3>
+        </div>
+
+    </form>
+
+</div>
+

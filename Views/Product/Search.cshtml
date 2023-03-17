@@ -1,0 +1,75 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "جست و جو";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h3 class="text-danger bg-warning w-25 p-3 border border-white text-center">@ViewBag.Search</h3>
+<div class="table-responsive text-center mt-4">
+  <table class="table table-bordered table-striped table-hover bg-warning">
+        <thead class="table-warning bg-danger">
+            <tr>
+                <td>#</td>
+                <td>نام</td>
+                <td>موجودی</td>
+                <td>قیمت</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+
+                <tr>
+                    <th class="bg-danger text-white">@item.Id</th>
+                    <td>@item.Name</td>
+                    @if (item.Number > 5)
+                    {
+                        <td class="bg-warning text-white">@item.Number</td>
+                    }
+                    else
+                    {
+                        <td class="bg-danger text-white">@item.Number</td>
+
+                    }
+
+                    <td class="bg-warning text-white">@item.Price</td>
+                    <td>
+                        @if (item.Number != 0)
+                        {
+                            <a class="btn btn-success btn-block btn-lg" asp-controller="Order" asp-action="Add" asp-route-Id="@item.Id">+ </a>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Number2 > 0)
+                        {
+                            <a class="btn btn-danger btn-block btn-lg" asp-controller="Order" asp-action="Delete2" asp-route-Id="@item.Id">-</a>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-info btn-block btn-lg" asp-controller="Product" asp-action="Edit" asp-route-Id="@item.Id">ویرایش</a>
+                    </td>
+
+
+                    <td>
+
+                        <a class="btn btn-danger btn-block btn-lg" asp-controller="Product" asp-action="Delete" asp-route-Id="@item.Id">حذف محصول</a>
+                    </td>
+
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>

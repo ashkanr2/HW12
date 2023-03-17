@@ -1,0 +1,120 @@
+﻿
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - _10</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/_10.styles.css" asp-append-version="true" />
+</head>
+<header>
+    <body class="bg-secondary">
+        <header>
+            <nav class=" navbar navbar-expand-lg fixed-top navbar-light  border border-3 text-light bg-dark ">
+                <div class="container-fluid justify-content-center justify-content-md-between">
+
+                    <ul class="navbar-nav flex-row">
+
+                        <div class="d-flex">
+                            <ul class="d-flex">
+                                @if (ViewBag.Log == null)
+                                {
+                                    <li class="nav-item d-flex bt-5 border border-white">
+                                        <form method="post" class="nav-item d-flex bg-warning">
+                                            <button class="nav-link text-danger bg-warning border border-dark" asp-area="" asp-controller="Account" asp-action="Login">ورود </button>
+
+                                        </form>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item d-flex bt-5  border border-white">
+                                        <form method="post" class="nav-item d-flex bg-warning">
+                                            <button type="submit" asp-controller="Account" asp-action="LogOut" class="bg-warning text-danger"
+                                                onclick="return confirm ('جدی جدی از حسابت میری بیرون ؟')">
+                                                @ViewBag.Log
+                                            </button>
+                                        </form>
+                                    </li>
+
+                                }
+                                <li class="nav-item d-flex">
+                                    <a class="nav-link text-danger bg-warning border border-dark" asp-area="" asp-controller="Home" asp-action="Index">صفحه اصلی</a>
+                                </li>
+
+
+
+
+                                <li class="nav-item d-flex">
+                                    @if (ViewBag.Log == null)
+                                    {
+                                        <a class="nav-link text-danger bg-warning border border-dark" asp-area="" asp-controller="Product" asp-action="List">نمایش کالاها</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="nav-link text-danger bg-warning border border-dark" asp-area="" asp-controller="User" asp-action="List">لیست کالاها</a>
+                                    }
+                                </li>
+                                <li class="nav-item d-flex">
+                                    <form>
+                                        @if (ViewBag.Log == null)
+                                        {
+                                            <Button class="nav-link text-danger bg-warning border border-dark"
+                                                asp-area="" asp-controller="Order" asp-action="List"
+                                                onclick="return confirm ('اول باید وارد حسابت شی جیگر  :) ')">
+                                                مشاهده سبد خرید
+                                            </Button>
+                                        }
+                                        else
+                                        {
+                                            <Button class="nav-link text-danger bg-warning border border-dark" asp-area="" asp-controller="Order" asp-action="List">مشاهده سبد خرید </Button>
+
+                                        }
+
+
+                                    </form>
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                    </ul>
+                    <!-- Avatar -->
+
+                    <div class="bg-warning text-danger">
+                    </div>
+
+                    <div class="d-flex my-2 my-sm-0">
+
+                        <!-- Search form -->
+                        <form method="post">
+                            <div class="bt-5">
+                                <input type="text" name="search" class="bg-secondary" placeholder="@ViewBag.Search" />
+                                <button type="submit" asp-controller="Product" asp-action="Search" class="bg-warning text-danger">جست و جو</button>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+</header>
+</html>
+

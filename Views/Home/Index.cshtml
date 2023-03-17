@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "صفحه اصلی";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="bg-warning text-center text-white">
+
+    <h1 class="text-white">سلام خوش امدید</h1>
+
+    <div>
+        اینجا مثلا یه سایته آنلاین شاپ عه
+    </div>
+    <h3>
+        @if (ViewBag.admin == true)
+        {
+            <a class="nav-link text-dark"asp-controller="َAdmin" asp-action="AdminActions">فعالیت </a>
+        }
+    </h3>
+</div>

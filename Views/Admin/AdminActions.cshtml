@@ -1,0 +1,85 @@
+﻿<br />
+@model List<Product>
+@{
+    ViewData["Title"] = "لیست محصولات";
+}
+<br />
+<br />
+<br />
+
+<form method="post" class="mt-5">
+    <div class="row">
+        <div class="table-responsive text-center mt-5">
+            <a class="btn btn-success  btn-block btn-lg border border-white" asp-controller="Product" asp-action="Create" asp-route-Id="">اضافه کردن محصول  </a>
+        </div>
+        <div class="table-responsive text-center mt-5">
+            <a class="btn btn-success  btn-block btn-lg border border-white" asp-controller="Admin" asp-action="UsersLIst" asp-route-Id=""> لیست کاربران </a>
+        </div>
+
+    </div>
+
+</form>
+<div class="table-responsive text-center mt-4">
+
+
+    <table class="table table-bordered table-striped table-hover bg-info">
+        <thead class="table-warning bg-danger">
+            <tr class="text-secondary">
+                <td>#</td>
+                <td>نام</td>
+                <td>موجودی</td>
+                <td>در سبد</td>
+                <td>قیمت</td>
+                <td>ویرایش</td>
+                <td>حذف</td>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+
+                <tr>
+                    <th class="bg-danger text-white">@item.Id</th>
+                    <td class=" bg-warning text-white">@item.Name</td>
+                    @if (item.Number > 5)
+                    {
+                        <td class="bg-warning text-white">@item.Number</td>
+                    }
+                    else
+                    {
+                        <td class="bg-danger text-white">@item.Number</td>
+
+                    }
+
+                    <td class="bg-warning text-white">@item.Number2</td>
+                    <td class="text-white bg-warning">@item.Price</td>
+
+                    <td class="bg-warning">
+                        <a class="btn btn-warning btn-block btn-lg  bg-primary text-white border border-white" asp-controller="Product" asp-action="Edit" asp-route-Id="@item.Id">ویرایش</a>
+                    </td>
+
+
+
+                    <td class="bg-warning">
+                        <form method="post">
+                            <button class="btn btn-danger btn-block btn-lg border border-white"
+                                 asp-controller="Product" asp-action="Delete" asp-route-Id="@item.Id"
+                                onclick="return confirm ('جون داداش می خوای  @item.Name حذف کنی ؟؟')">
+                                حذف محصول
+                            </button>
+
+                        </form>
+                    </td>
+
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>
+

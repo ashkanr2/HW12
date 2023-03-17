@@ -1,0 +1,29 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "سبدهای خرید";
+}
+<br />
+<br />
+<br />
+<br />
+
+<form method="post" >
+   
+    <div class="bg-warning text-white text-center">
+        <br />
+        <br />
+        <span> سبدهای خرید کاربر : @ViewBag.Name</span>
+        <br />
+        <br />
+        @foreach(var order in Model)
+        {
+            @if (order.CustomerId == ViewBag.Id)
+            {
+                <a class="bg-success text-white text-center" asp-action="OrderList" asp-controller="Order" asp-route-Id="@order.Id">سبد خرید:@order.Id   </a>
+                <br />
+                <br />
+            }
+        }
+    </div>
+</form>
+

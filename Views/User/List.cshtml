@@ -1,0 +1,64 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "لیست محصولات";
+}
+<br />
+<br />
+<br />
+
+<div class="table-responsive text-center mt-4">
+
+
+    <table class="table table-bordered table-striped table-hover bg-info">
+        <thead class="table-warning bg-danger">
+            <tr class="text-secondary">
+
+                <td>نام</td>
+                <td>موجودی</td>
+                <td>قیمت</td>
+                <td>اضافه به سبد جدید</td>
+                <td>اضافه به سبد</td>
+                <td>حذف از سبد</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+
+                    <td class="text-white">@item.Name</td>
+                    @if (item.Number > 5)
+                    {
+                        <td class="bg-info text-white">@item.Number</td>
+                    }
+                    else
+                    {
+                        <td class="bg-danger text-white">@item.Number</td>
+
+                    }
+
+                    <td class="text-white">@item.Price</td>
+                    <td class="text-white">
+                        <a class="btn btn-success btn-block btn-lg border border-white" asp-controller="Order" asp-action="AddNewOrder" asp-route-Id="@item.Id">+ سبد جدید </a>
+                    </td>
+                    <td>
+                        @if (item.Number != 0)
+                        {
+                            <a class="btn btn-success btn-block btn-lg border border-white" asp-controller="Order" asp-action="Add" asp-route-Id="@item.Id">+ </a>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Number2 > 0)
+                        {
+                            <a class="btn btn-danger btn-block btn-lg border border-white" asp-controller="Order" asp-action="Delete2" asp-route-Id="@item.Id">-</a>
+                        }
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>

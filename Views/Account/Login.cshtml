@@ -1,0 +1,34 @@
+﻿@model Account
+<html lang="fa" dir="rtl">
+
+<form method="post">
+    <div class="container py-5 h-100 mt-3">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <h3 class="mb-5"> پنل ورود</h3>
+                        <h3 class="text-white bg-warning w-25 p-3 border border-white text-center">@ViewBag.Log</h3>
+
+
+                        <div class="form-outline mb-4">
+                            <label asp-for="Email">ایمیل : </label>
+                            <input type="text" asp-for="Email" placeholder="ایمیل" required="required" />
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                        <label asp-for="Password">رمزعبور :</label>
+                        <input type="text" asp-for="Password" placeholder="رمز عبور" required="required" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+
+                    <button class="btn btn-warning btn-block btn-lg" asp-controller="Account" asp-action="Login">ورود کاربران </button>
+
+                </div>
+                
+            </div>  
+        </div>
+    </div>
+    </div>
+</form>
+
